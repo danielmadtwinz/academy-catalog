@@ -1,5 +1,4 @@
 import { useState, useMemo } from 'react'
-import { Link } from 'react-router-dom'
 import { useEpisodes } from '../hooks/useEpisodes'
 import ProgressTracker from '../components/ProgressTracker'
 import ActFilter from '../components/ActFilter'
@@ -38,18 +37,9 @@ export default function Dashboard() {
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-6">
-      {/* Header */}
-      <div className="flex items-center justify-between mb-6">
-        <div>
-          <h1 className="text-2xl font-bold">BEATLAND ACADEMY</h1>
-          <p className="text-sm text-[var(--color-text-muted)]">Series Catalog — Season 1</p>
-        </div>
-        <Link
-          to="/sounds"
-          className="px-4 py-2 rounded-lg bg-[var(--color-surface-light)] border border-[var(--color-border)] text-sm hover:border-[var(--color-primary)] transition-colors"
-        >
-          Sound Library
-        </Link>
+      <div className="mb-6">
+        <h1 className="text-2xl font-bold">Серии</h1>
+        <p className="text-sm text-[var(--color-text-muted)]">Сезон 1 · 20 серий · Техника битбокса</p>
       </div>
 
       <ProgressTracker episodes={episodes} />

@@ -2,12 +2,13 @@ import { useParams, Link } from 'react-router-dom'
 import { useEpisode } from '../hooks/useEpisode'
 import { STATUS_LABELS, STATUS_COLORS, STATUS_ORDER, ACT_LABELS } from '../lib/types'
 import type { EpisodeStatus } from '../lib/types'
-import { ArrowLeft, Copy, Check } from 'lucide-react'
+import { ChevronLeft, ChevronRight, Copy, Check } from 'lucide-react'
 import { useState } from 'react'
 
 export default function EpisodeDetail() {
   const { id } = useParams<{ id: string }>()
-  const { episode, shorts, loading, updateStatus } = useEpisode(Number(id))
+  const epNumber = Number(id)
+  const { episode, shorts, loading, updateStatus } = useEpisode(epNumber)
   const [copied, setCopied] = useState(false)
 
   if (loading) {
@@ -21,9 +22,6 @@ export default function EpisodeDetail() {
   if (!episode) {
     return (
       <div className="max-w-4xl mx-auto px-4 py-8">
-        <Link to="/" className="text-[var(--color-primary)] flex items-center gap-1 mb-4">
-          <ArrowLeft size={16} /> Назад
-        </Link>
         <p>Серия не найдена</p>
       </div>
     )
@@ -45,10 +43,25 @@ export default function EpisodeDetail() {
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-6">
-      {/* Back + Header */}
-      <Link to="/" className="text-[var(--color-primary)] flex items-center gap-1 mb-4 text-sm hover:underline">
-        <ArrowLeft size={14} /> Назад к каталогу
-      </Link>
+      {/* Prev/Next navigation */}
+      <div className="flex items-center justify-between mb-4">
+        {epNumber > 1 ? (
+          <Link
+            to={`/episode/${epNumber - 1}`}
+            className="text-[var(--color-primary)] flex items-center gap-1 text-xs hover:underline"
+          >
+            <ChevronLeft size={14} /> Серия {epNumber - 1}
+          </Link>
+        ) : <span />}
+        {epNumber < 20 ? (
+          <Link
+            to={`/episode/${epNumber + 1}`}
+            className="text-[var(--color-primary)] flex items-center gap-1 text-xs hover:underline"
+          >
+            Серия {epNumber + 1} <ChevronRight size={14} />
+          </Link>
+        ) : <span />}
+      </div>
 
       <div className="flex items-start gap-4 mb-6">
         <div

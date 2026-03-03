@@ -1,8 +1,6 @@
 import { useState, useMemo } from 'react'
-import { Link } from 'react-router-dom'
 import { useSounds } from '../hooks/useSounds'
 import { MODULE_COLORS } from '../lib/types'
-import { ArrowLeft } from 'lucide-react'
 
 const MODULES = ['Ударные', 'Басы', 'Духовые', 'Эффекты', 'Вокал']
 
@@ -46,10 +44,6 @@ export default function SoundLibrary() {
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-6">
-      <Link to="/" className="text-[var(--color-primary)] flex items-center gap-1 mb-4 text-sm hover:underline">
-        <ArrowLeft size={14} /> Каталог серий
-      </Link>
-
       <div className="flex items-center justify-between mb-6">
         <div>
           <h1 className="text-2xl font-bold">Sound Library</h1>
