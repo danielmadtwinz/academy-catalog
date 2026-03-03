@@ -82,11 +82,10 @@ export const MODULE_COLORS: Record<string, string> = {
 
 // --- Location ---
 
-export type LocationEnvironment = 'Корабль' | 'Колора' | 'Оба'
+export type LocationEnvironment = 'Дом' | 'Природа' | 'Город' | 'Храм'
 
 export interface Location {
   id: number
-  episode_number: number
   name: string
   description: string | null
   color: string | null
@@ -95,16 +94,19 @@ export interface Location {
   genre_style: string | null
   resonant_link: string | null
   nano_banana_prompt: string | null
+  episodes: number[]
 }
 
 export const ENVIRONMENT_LABELS: Record<LocationEnvironment, string> = {
-  'Корабль': 'Корабль',
-  'Колора': 'Колора',
-  'Оба': 'Оба мира',
+  'Дом': 'Дом',
+  'Природа': 'Природа',
+  'Город': 'Город',
+  'Храм': 'Храм',
 }
 
 export const ENVIRONMENT_COLORS: Record<LocationEnvironment, string> = {
-  'Корабль': '#3B82F6',
-  'Колора': '#10B981',
-  'Оба': '#8B5CF6',
+  'Дом': '#4CAF50',
+  'Природа': '#2E7D32',
+  'Город': '#FF5722',
+  'Храм': '#FF9800',
 }
