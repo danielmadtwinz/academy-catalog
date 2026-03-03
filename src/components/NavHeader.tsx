@@ -1,11 +1,12 @@
 import { Link, useLocation } from 'react-router-dom'
-import { LayoutGrid, BookOpen, Users, Music } from 'lucide-react'
+import { LayoutGrid, BookOpen, Users, Music, Clapperboard } from 'lucide-react'
 
 const NAV_ITEMS = [
   { to: '/', label: 'Серии', icon: LayoutGrid },
   { to: '/contents', label: 'Содержание', icon: BookOpen },
   { to: '/characters', label: 'Персонажи', icon: Users },
   { to: '/sounds', label: 'Звуки', icon: Music },
+  { to: '/director', label: 'Director', icon: Clapperboard },
 ]
 
 export default function NavHeader() {

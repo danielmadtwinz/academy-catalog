@@ -79,3 +79,32 @@ export const MODULE_COLORS: Record<string, string> = {
   'Эффекты': '#10B981',
   'Вокал': '#EAB308',
 }
+
+// --- Location ---
+
+export type LocationEnvironment = 'Корабль' | 'Колора' | 'Оба'
+
+export interface Location {
+  id: number
+  episode_number: number
+  name: string
+  description: string | null
+  color: string | null
+  color_name: string | null
+  environment: LocationEnvironment | null
+  genre_style: string | null
+  resonant_link: string | null
+  nano_banana_prompt: string | null
+}
+
+export const ENVIRONMENT_LABELS: Record<LocationEnvironment, string> = {
+  'Корабль': 'Корабль',
+  'Колора': 'Колора',
+  'Оба': 'Оба мира',
+}
+
+export const ENVIRONMENT_COLORS: Record<LocationEnvironment, string> = {
+  'Корабль': '#3B82F6',
+  'Колора': '#10B981',
+  'Оба': '#8B5CF6',
+}

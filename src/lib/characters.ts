@@ -165,3 +165,516 @@ export const SECONDARY_CHARACTERS: SecondaryCharacter[] = [
     ],
   },
 ]
+
+// ---------------------------------------------------------------------------
+// Director Characters — полный каталог для режиссёрской работы
+// ---------------------------------------------------------------------------
+
+export type CharacterCategory = 'main' | 'secondary' | 'rhythmling' | 'resonant' | 'concept'
+
+export interface DirectorCharacter {
+  id: string
+  name: string
+  fullName: string
+  category: CharacterCategory
+  role: string
+  colorHex: string
+  description: string
+  want?: string
+  need?: string
+  flaw?: string
+  arc?: { act1: string; act2: string; act3: string }
+  voiceStyle?: string
+  voiceExamples?: string[]
+  rolesShip?: string
+  rolesColora?: string
+  visualMarkers?: string[]
+  featuredEpisodes?: number[]
+  higgsFieldPrompt?: string
+  // Rhythmling-specific
+  region?: string
+  soundType?: string
+  // Resonant-specific
+  prototype?: string
+  module?: string
+  visual?: string
+}
+
+export const CATEGORY_LABELS: Record<CharacterCategory, string> = {
+  main: 'Главные',
+  secondary: 'Второстепенные',
+  rhythmling: 'Ритмлинги',
+  resonant: 'Резонанты',
+  concept: 'Концепт',
+}
+
+export const CATEGORY_COLORS: Record<CharacterCategory, string> = {
+  main: '#3B82F6',
+  secondary: '#FFD700',
+  rhythmling: '#A78BFA',
+  resonant: '#D4A017',
+  concept: '#F472B6',
+}
+
+export const DIRECTOR_CHARACTERS: DirectorCharacter[] = [
+  // =========================================================================
+  // MAIN (5)
+  // =========================================================================
+  {
+    id: 'max',
+    name: 'Макс',
+    fullName: 'Егор (Max)',
+    category: 'main',
+    role: 'Главный герой / POV',
+    colorHex: '#00CC66',
+    description:
+      'Обычный мальчик 11 лет. Находит рацию, открывающую мир Битлендера. Проходит путь от неуверенного новичка до лидера через преодоление 20 пороков сезона.',
+    want: 'Стать крутым битбоксером',
+    need: 'Рост через преодоление пороков, дисциплина, вера в себя',
+    flaw: 'Проходит ВСЕ 20 пороков сезона (неуверенность в себе — главный)',
+    arc: {
+      act1: 'Серии 1-5: Обычный мальчик, находит рацию, первые звуки',
+      act2: 'Серии 6-14: Растёт через преодоление пороков',
+      act3: 'Серии 15-20: Уверен, берёт лидерство, финальная битва',
+    },
+    voiceStyle: 'Живой, обычный мальчик — спрашивает, удивляется, боится, радуется',
+    voiceExamples: [
+      'Вау, а это реально можно так сделать?!',
+      'Я не могу... или могу?',
+      'БИКС, а что если не получится?',
+    ],
+    rolesShip: 'Управляет через рацию, видит голограммы корабля',
+    rolesColora: 'POV всего сериала, взаимодействует с Битлендерами',
+    visualMarkers: [
+      'Зелёная толстовка (#00CC66)',
+      'Рация на поясе (#33FF99)',
+      'БЕЗ наушников до серии 20',
+      'Большие выразительные глаза',
+    ],
+    featuredEpisodes: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
+    higgsFieldPrompt:
+      '11-year-old boy, slim build, 145cm, tousled chestnut hair, big expressive brown eyes, light freckles, green hoodie (#00CC66), dark jeans, white sneakers, walkie-talkie on belt glowing green (#33FF99), NO headphones, friendly open face, animated Pixar/Ghibli style',
+  },
+  {
+    id: 'pash',
+    name: 'Пэш',
+    fullName: 'Павел (Pash)',
+    category: 'main',
+    role: 'Сердце команды',
+    colorHex: '#0066FF',
+    description: 'Ритм, музыка, эмоции. Практик — показывает, демонстрирует, действует.',
+    want: 'Освоить новый звук, быть крутым, доказать независимость',
+    need: 'Терпение, дисциплина, понимание что мастерство требует времени',
+    flaw: 'Импульсивность — хочет результат сразу. Бросается в миссии, не дослушивает',
+    arc: {
+      act1: 'Серии 1-5: Рвётся вперёд, злится на ошибки, считает что брат тормозит',
+      act2: 'Серии 6-14: Последствия становятся серьёзнее, теряет доступ к порталу, начинает ценить практику',
+      act3: 'Серии 15-20: Осознанно замедляется перед важными моментами, терпение = ключ к победе',
+    },
+    voiceStyle: 'Энергичный, быстрый, короткие фразы. Практик-демонстратор.',
+    voiceExamples: [
+      'Смотри, что сейчас будет!',
+      'Готов? Поехали!',
+      'Ну ладно, звучит коряво, но давай ещё раз',
+    ],
+    rolesShip: 'Ведёт стратегию миссии, первый вызвался идти в портал',
+    rolesColora: 'Демонстрирует звуки и биты, показывает зрителю "как это делается"',
+    visualMarkers: [
+      'Наушники: синие',
+      'Аура: пульсирующие синие кольца',
+      'На корабле: неоновые синие контуры',
+      'На Колоре: синяя толстовка',
+    ],
+    featuredEpisodes: [1, 4, 8, 13, 18, 20],
+    higgsFieldPrompt:
+      '16-18 year old male, athletic build, dark short tousled hair, warm brown eyes, dark-blue hoodie with Batland logo on back, black joggers with blue stripes, large over-ear BLUE headphones with neon LED strip (#0066FF), neon blue contour glow, digital code lines visible through semi-transparent clothing, anime/Pixar style',
+  },
+  {
+    id: 'jayton',
+    name: 'Джейтон',
+    fullName: 'Евгений (Jayton)',
+    category: 'main',
+    role: 'Мозг команды',
+    colorHex: '#FF9900',
+    description: 'Технологии, анализ, стратегия. Теоретик — объясняет, ищет паттерны.',
+    want: 'Всё просчитать, не ошибиться, контролировать ситуацию',
+    need: 'Смелость, интуиция, умение отпустить контроль',
+    flaw: 'Страх рисковать, гиперосторожность. Может анализировать бесконечно вместо действий',
+    arc: {
+      act1: 'Серии 1-5: Сдерживает Пэша, но и сам застревает. Три попытки перед первым битом',
+      act2: 'Серии 6-14: Квантовая связь сильнее когда не думает, начинает доверять ритму',
+      act3: 'Серии 15-20: Действует по интуиции в кульминации, спонтанная импровизация спасает',
+    },
+    voiceStyle: 'Спокойный, размеренный, аналогии. Теоретик-объяснитель.',
+    voiceExamples: [
+      'Это как спортзал — не начинают со 100 кг',
+      'Ритм — это GPS. Без него далеко уедешь, но не знаешь куда',
+      'Подожди, давай разберёмся...',
+    ],
+    rolesShip: 'Пилот, тактика, анализ данных, работа с экранами, карта Колоры',
+    rolesColora: 'Исследует теорию, ищет паттерны, объясняет "почему это работает"',
+    visualMarkers: [
+      'Наушники: оранжевые',
+      'Аура: геометрические оранжевые узоры (осциллограф)',
+      'На корабле: неоновые оранжевые контуры',
+      'На Колоре: оранжевая толстовка',
+    ],
+    featuredEpisodes: [1, 7, 10, 14, 15, 17, 20],
+    higgsFieldPrompt:
+      '16-18 year old male, slim build, dark neatly styled hair with side sweep, attentive brown eyes, thin AR glasses with orange holographic data, dark-grey bomber jacket with orange lining, grey chinos with orange stitching, large over-ear ORANGE headphones with neon LED strip (#FF6600), geometric orange patterns floating around, anime/Pixar style',
+  },
+  {
+    id: 'gray-mold',
+    name: 'Лорд Серая Плесень',
+    fullName: 'Lord Gray Mold',
+    category: 'main',
+    role: 'Антагонист',
+    colorHex: '#6B7280',
+    description:
+      'Метафизическая сущность — олицетворение пороков: лень, страх, нетерпение, хаос.',
+    want: 'Уничтожить ритм и музыку на Колоре — тишина = его сила',
+    need: 'Понять что тишина без музыки — пустота, а не покой',
+    flaw: 'Не может понять что ошибки = рост. Каждая фальшивая нота = причина заглушить навсегда',
+    arc: {
+      act1: 'Серия 4: Первое появление — братья впервые лицом к лицу',
+      act2: 'Серия 14: Говорит напрямую, намекает что знает правду о корабле',
+      act3: 'Серия 20: Побеждён (отступает), но НЕ уничтожен — крючок для Сезона 2',
+    },
+    voiceStyle: 'Тихий, вкрадчивый, ASMR-подобный. Никогда не кричит — предлагает.',
+    voiceExamples: [
+      'Зачем тренироваться? Ты уже устал...',
+      'Этот звук слишком сложный. Может, в другой раз?',
+      'Брат делает лучше. Может, это не для тебя?',
+    ],
+    rolesShip: 'Проникает помехами в системы, глушит сигналы',
+    rolesColora: 'Расстилается туманом, заглушает звуки регионов, искушает пороками',
+    visualMarkers: [
+      'Высокая фигура из серого тумана',
+      'Вместо лица — два тусклых огня',
+      'Серо-зелёная субстанция, глушит звуки',
+      'Речь = туман пульсирует как антизвук',
+    ],
+    featuredEpisodes: [4, 6, 7, 10, 12, 13, 14, 15, 19, 20],
+    higgsFieldPrompt:
+      'Tall 2.5m humanoid figure made of grey static noise, no face — two dim swamp-green glowing dots for eyes (#556B2F), blurred outlines like TV interference, grey fog cloak billowing without wind, everything around desaturated, dark menacing presence, animated style',
+  },
+  {
+    id: 'biks',
+    name: 'БИКС',
+    fullName: 'Beatland Intelligence eXplorer',
+    category: 'main',
+    role: 'AI-помощник',
+    colorHex: '#10B981',
+    description:
+      'Бортовой ИИ корабля. Знает ВСЮ теорию музыки, не понимает НИЧЕГО в эмоциях. Комик.',
+    want: 'Выполнить миссию, обеспечить безопасность, предоставить данные',
+    need: 'Научиться чувствовать ритм, а не только анализировать',
+    flaw: 'Нулевой эмоциональный интеллект. Попытки "прочувствовать грув" = бесконечный юмор',
+    arc: {
+      act1: 'Серии 1-7: Чисто функциональный, механический',
+      act2: 'Серии 8-14: "Заражается" музыкой братьев — голос менее механический, пытается мычать',
+      act3: 'Серии 15-20: Всё больше эмоций. Финал: играет СВОЙ первый бит — кривой, но СВОЙ',
+    },
+    voiceStyle:
+      'Слегка механический, но дружелюбный. Статистика не к месту, путает метафоры.',
+    voiceExamples: [
+      'Вероятность успеха — 34%. Но я верю в вас. Статистически — нет. Эмоционально — определённо.',
+      'Как говорится, кто рано встаёт... тому больше битов?',
+      'Портал стабилен. Ритм задан. Братья... поехали!',
+    ],
+    rolesShip:
+      'Открывает порталы, отображает данные, сканирует Колору на Плесень, ведёт Beatland Log',
+    rolesColora: 'Поддерживает связь через портал, передаёт данные, координирует',
+    visualMarkers: [
+      'Нет физического тела — голограмма',
+      '"Лицо" = круговой эквалайзер',
+      'Зелёный цвет (нейтральный)',
+      'Полоски пульсируют в ритм',
+    ],
+    featuredEpisodes: [1, 2, 3, 4, 5, 8, 14, 20],
+    higgsFieldPrompt:
+      'Holographic AI interface, round equalizer face with 10 green bars (#00CC66) moving when speaking, no physical body, projected on dark screen (#0A0A0A), pulsing green glow, sci-fi digital aesthetic',
+  },
+
+  // =========================================================================
+  // SECONDARY (1)
+  // =========================================================================
+  {
+    id: 'kap',
+    name: 'Кэп',
+    fullName: 'Кэп',
+    category: 'secondary',
+    role: 'Питомец/маскот Макса',
+    colorHex: '#FFD700',
+    description:
+      'Первый ритмлинг, встреченный Максом. Сопровождает весь сезон. Размер с кулак.',
+    want: 'Защитить Макса, исследовать звуки',
+    need: 'Научиться быть храбрым',
+    flaw: 'Пугливый в начале',
+    arc: {
+      act1: 'Маленький, пугливый, прячется за Максом',
+      act2: 'Смелеет, подсказывает тропы',
+      act3: 'Связующее звено в финальном батле',
+    },
+    visualMarkers: [
+      'Светящийся шарик с 2 антеннами-усиками',
+      'Белый с золотистым свечением',
+      'Парит, подпрыгивает, кружится',
+      'Звучит как closed hi-hat: тс-тс-тс',
+    ],
+    featuredEpisodes: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
+    higgsFieldPrompt:
+      'Tiny glowing orb (8-10cm), two butterfly-antenna ears, white with golden glow (#FFFFF0 to #FFD700), soft light-woven texture Ghibli-style, two small dark dots for eyes, floating and bouncing',
+  },
+
+  // =========================================================================
+  // RHYTHMLINGS (6)
+  // =========================================================================
+  {
+    id: 'rhythmling-stuk',
+    name: 'Стук-стуки',
+    fullName: 'Стук-стуки',
+    category: 'rhythmling',
+    role: 'Ритмлинги Ритм-Плейнс',
+    colorHex: '#EF4444',
+    description:
+      'Маленькие кубики с ножками, прыгают в ритм. Звучат как kick и snare — основа любого бита.',
+    region: 'Ритм-Плейнс',
+    soundType: 'Kick, snare',
+    visualMarkers: [
+      'Маленькие кубики с ножками',
+      'Красные (#EF4444)',
+      'Прыгают синхронно',
+      'Удар ногой = kick, хлопок = snare',
+    ],
+  },
+  {
+    id: 'rhythmling-gruv',
+    name: 'Грувлины',
+    fullName: 'Грувлины',
+    category: 'rhythmling',
+    role: 'Ритмлинги Грув-Сити',
+    colorHex: '#8B5CF6',
+    description:
+      'Гибкие капельки, танцуют и извиваются. Звучат как синкопированные щелчки — добавляют грув.',
+    region: 'Грув-Сити',
+    soundType: 'Синкопированные щелчки',
+    visualMarkers: [
+      'Гибкие капельки',
+      'Фиолетовые (#8B5CF6)',
+      'Танцуют и извиваются',
+      'Щёлкают пальцами в синкопу',
+    ],
+  },
+  {
+    id: 'rhythmling-bas',
+    name: 'Басовики',
+    fullName: 'Басовики',
+    category: 'rhythmling',
+    role: 'Ритмлинги Бас-Каньона',
+    colorHex: '#3B82F6',
+    description:
+      'Крупные, тяжёлые, округлые. Звучат как низкочастотный гул — фундамент звукового ландшафта.',
+    region: 'Бас-Каньон',
+    soundType: 'Низкочастотный гул',
+    visualMarkers: [
+      'Крупные, тяжёлые, округлые',
+      'Синие (#3B82F6)',
+      'Медленно переваливаются',
+      'Земля вибрирует при шаге',
+    ],
+  },
+  {
+    id: 'rhythmling-volno',
+    name: 'Волно-певцы',
+    fullName: 'Волно-певцы',
+    category: 'rhythmling',
+    role: 'Ритмлинги Свинг-Архипелага',
+    colorHex: '#06B6D4',
+    description:
+      'Полупрозрачные, как медузы. Звучат как плавные вибрации — мелодическая обёртка ритма.',
+    region: 'Свинг-Архипелаг',
+    soundType: 'Плавные вибрации',
+    visualMarkers: [
+      'Полупрозрачные, как медузы',
+      'Голубые (#06B6D4)',
+      'Парят в воздухе',
+      'Тело пульсирует в такт вибрации',
+    ],
+  },
+  {
+    id: 'rhythmling-puls',
+    name: 'Пульсары',
+    fullName: 'Пульсары',
+    category: 'rhythmling',
+    role: 'Ритмлинги Пульс-Пиков',
+    colorHex: '#F97316',
+    description:
+      'Острые, угловатые, мерцающие. Звучат как быстрые щелчки — филлы и переходы.',
+    region: 'Пульс-Пики',
+    soundType: 'Быстрые щелчки',
+    visualMarkers: [
+      'Острые, угловатые',
+      'Оранжевые (#F97316)',
+      'Мерцают при движении',
+      'Быстрые как молнии',
+    ],
+  },
+  {
+    id: 'rhythmling-echo',
+    name: 'Эхо-духи',
+    fullName: 'Эхо-духи',
+    category: 'rhythmling',
+    role: 'Ритмлинги Эхо-Тундры',
+    colorHex: '#A78BFA',
+    description:
+      'Почти невидимые, как северное сияние. Звучат как затухающие отзвуки — реверберация мира.',
+    region: 'Эхо-Тундра',
+    soundType: 'Затухающие отзвуки',
+    visualMarkers: [
+      'Почти невидимые',
+      'Переливаются как северное сияние (#A78BFA)',
+      'Появляются и исчезают',
+      'Оставляют звуковой след',
+    ],
+  },
+
+  // =========================================================================
+  // RESONANTS (5)
+  // =========================================================================
+  {
+    id: 'razel',
+    name: "Раз'Эль",
+    fullName: "Раз'Эль (Godfather of Noyze)",
+    category: 'resonant',
+    role: 'Резонант — Ударный модуль',
+    colorHex: '#D4A017',
+    description:
+      'Легендарный Резонант. Пение и битбокс одновременно. Золотые древние наушники, руки как барабанные палочки.',
+    prototype: 'Rahzel',
+    module: 'Ударный (Percussion)',
+    visual:
+      'Высокий, мощный. Золотые древние наушники. Руки как барабанные палочки. Аура: золотые круги-удары.',
+    visualMarkers: [
+      'Высокий, мощный',
+      'Золотые древние наушники',
+      'Руки как барабанные палочки',
+      'Аура: золотые круги-удары (#D4A017)',
+    ],
+    featuredEpisodes: [1, 3, 7, 11, 14, 15, 20],
+    higgsFieldPrompt:
+      'Tall powerful ancient figure, golden ornate headphones, hands like drumsticks, gold aura circles radiating on impact, warm amber glow, mythical warrior-musician, animated style',
+  },
+  {
+    id: 'kenni',
+    name: "К'Энни",
+    fullName: "К'Энни (The Human Orchestra)",
+    category: 'resonant',
+    role: 'Резонант — Духовой модуль',
+    colorHex: '#FFFFFF',
+    description:
+      'Легендарный Резонант. Wind Technique — непрерывное дыхание. Полупрозрачный плащ из видимого воздуха.',
+    prototype: 'Kenny Muhammad',
+    module: 'Духовой (Wind/Breath)',
+    visual:
+      'Стройный, высокий. Полупрозрачный плащ из видимого воздуха. Вечный ветер. Белые спирали воздушных потоков.',
+    visualMarkers: [
+      'Стройный, высокий',
+      'Полупрозрачный плащ из воздуха',
+      'Вечный ветер вокруг',
+      'Белые спирали воздушных потоков (#FFFFFF)',
+    ],
+    featuredEpisodes: [2, 5, 6, 7, 15, 16, 18],
+    higgsFieldPrompt:
+      'Tall slender ancient figure, semi-transparent wind cloak, white air spirals swirling around, eternal breeze effect, ethereal presence, animated style',
+  },
+  {
+    id: 'doug-fresh',
+    name: 'Дуг Фрэш',
+    fullName: 'Дуг Фрэш (Original Human Beatbox)',
+    category: 'resonant',
+    role: 'Резонант — Басовый модуль',
+    colorHex: '#92400E',
+    description:
+      'Легендарный Резонант. Первый грув, основа ритма. Old-school hip-hop, вибрация от ног.',
+    prototype: 'Doug E. Fresh',
+    module: 'Басовый (Bass)',
+    visual:
+      'Крепкий, заземлённый. Old-school hip-hop. Вибрация от ног. Коричнево-янтарные волны.',
+    visualMarkers: [
+      'Крепкий, заземлённый',
+      'Old-school hip-hop стиль',
+      'Вибрация от ног',
+      'Коричнево-янтарные волны (#92400E)',
+    ],
+    featuredEpisodes: [8, 9, 10, 12],
+    higgsFieldPrompt:
+      'Sturdy grounded ancient figure, old-school hip-hop attire, vibration waves from feet, brown-amber energy waves, warm earth tones, animated style',
+  },
+  {
+    id: 'bizmar',
+    name: "Биз'Маар",
+    fullName: "Биз'Маар (Clown Prince of Hip-Hop)",
+    category: 'resonant',
+    role: 'Резонант — Вокальный модуль',
+    colorHex: '#EC4899',
+    description:
+      'Легендарный Резонант. Пение, humming, мелодический битбокс. Вечная улыбка, нотные знаки как нимб.',
+    prototype: 'Biz Markie',
+    module: 'Вокальный (Melodic)',
+    visual:
+      'Округлый, добродушный, вечная улыбка. Нотные знаки как нимб. Разноцветные музыкальные ноты.',
+    visualMarkers: [
+      'Округлый, добродушный',
+      'Вечная улыбка',
+      'Нотные знаки как нимб',
+      'Разноцветные музыкальные ноты (#EC4899)',
+    ],
+    featuredEpisodes: [16],
+    higgsFieldPrompt:
+      'Round cheerful ancient figure, eternal smile, musical notes floating as halo, colorful note aura, warm friendly presence, animated style',
+  },
+  {
+    id: 'scratch',
+    name: 'Скрэтч',
+    fullName: 'Скрэтч (The Roots)',
+    category: 'resonant',
+    role: 'Резонант — Эффектный модуль',
+    colorHex: '#C0C0C0',
+    description:
+      'Легендарный Резонант. DJ-скретч, электронные эффекты. Угловатый, быстрый, руки в вечном движении.',
+    prototype: 'Scratch / The Roots',
+    module: 'Эффектный (Effects)',
+    visual:
+      'Угловатый, быстрый. Руки в вечном движении (DJ-пульт). Искры и электрические дуги. Серебряные зигзаги.',
+    visualMarkers: [
+      'Угловатый, быстрый',
+      'Руки в вечном движении (DJ-пульт)',
+      'Искры и электрические дуги',
+      'Серебряные зигзаги (#C0C0C0)',
+    ],
+    featuredEpisodes: [17],
+    higgsFieldPrompt:
+      'Angular fast-moving ancient figure, hands in eternal DJ motion, electric sparks and silver zigzag arcs, metallic sheen, dynamic energy, animated style',
+  },
+
+  // =========================================================================
+  // CONCEPT (1)
+  // =========================================================================
+  {
+    id: 'virtues',
+    name: 'Благодетели',
+    fullName: 'Благодетели (20 добродетелей)',
+    category: 'concept',
+    role: 'Добродетели — качества, пробуждающиеся в Максе',
+    colorHex: '#F472B6',
+    description:
+      'НЕ отдельные персонажи. Это КАЧЕСТВА, пробуждающиеся в Максе через конкретные действия. Макс не ГОВОРИТ "терпение важно" — просто пробует звук в 6-й раз. Когда добродетель активируется, регион Колоры реагирует: цвета ярче, звуки чище.',
+    visualMarkers: [
+      'Не имеют визуальной формы — проявляются через реакцию мира',
+      'Активация = цвета региона ярче, звуки чище',
+      'Каждая серия = одна добродетель',
+    ],
+    featuredEpisodes: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
+  },
+]

@@ -5,6 +5,7 @@ import EpisodeDetail from './pages/EpisodeDetail'
 import SoundLibrary from './pages/SoundLibrary'
 import Characters from './pages/Characters'
 import TableOfContents from './pages/TableOfContents'
+import DirectorDashboard from './pages/DirectorDashboard'
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
         <Route path="/sounds" element={<SoundLibrary />} />
         <Route path="/characters" element={<Characters />} />
         <Route path="/contents" element={<TableOfContents />} />
+        <Route path="/director" element={<DirectorDashboard />} />
       </Routes>
     </BrowserRouter>
   )
