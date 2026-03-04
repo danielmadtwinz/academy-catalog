@@ -1,9 +1,12 @@
 import { useState, useMemo } from 'react'
 import { DIRECTOR_CHARACTERS, type CharacterCategory, type DirectorCharacter } from '../lib/characters'
 
+export type CharacterSort = 'category' | 'season' | 'name'
+
 export function useDirectorCharacters() {
   const [categoryFilter, setCategoryFilter] = useState<CharacterCategory | null>(null)
   const [search, setSearch] = useState('')
+  const [sortBy, setSortBy] = useState<CharacterSort>('category')
 
   const filtered = useMemo(() => {
     let result: DirectorCharacter[] = DIRECTOR_CHARACTERS
@@ -18,8 +21,20 @@ export function useDirectorCharacters() {
           c.description.toLowerCase().includes(q),
       )
     }
-    return result
-  }, [categoryFilter, search])
+
+    return [...result].sort((a, b) => {
+      if (sortBy === 'season') {
+        const aFirst = a.featuredEpisodes?.[0] ?? 99
+        const bFirst = b.featuredEpisodes?.[0] ?? 99
+        return aFirst - bFirst
+      }
+      if (sortBy === 'name') {
+        return a.name.localeCompare(b.name, 'ru')
+      }
+      // default: category order (as defined in array)
+      return 0
+    })
+  }, [categoryFilter, search, sortBy])
 
   const categoryCounts = useMemo(() => {
     const counts: Record<string, number> = {}
@@ -36,6 +51,8 @@ export function useDirectorCharacters() {
     setCategoryFilter,
     search,
     setSearch,
+    sortBy,
+    setSortBy,
     categoryCounts,
   }
 }
