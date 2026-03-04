@@ -27,7 +27,7 @@ export default function DirectorDashboard() {
 
   const tabs = TABS.map(t => ({
     ...t,
-    count: t.id === 'actors' ? allCharacters.length : 8,
+    count: t.id === 'actors' ? allCharacters.length : 15,
   }))
 
   return (
@@ -35,7 +35,7 @@ export default function DirectorDashboard() {
       <div className="mb-6">
         <h1 className="text-2xl font-bold">Director's Dashboard</h1>
         <p className="text-sm text-[var(--color-text-muted)]">
-          {allCharacters.length} персонажей · 8 локаций · Сезон 1
+          {allCharacters.length} персонажей · 15 локаций · Сезон 1
         </p>
       </div>
 

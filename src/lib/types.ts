@@ -82,7 +82,7 @@ export const MODULE_COLORS: Record<string, string> = {
 
 // --- Location ---
 
-export type LocationEnvironment = 'Дом' | 'Природа' | 'Город' | 'Храм'
+export type LocationEnvironment = 'Дом' | 'Природа' | 'Город' | 'Храм' | 'Корабль'
 
 export interface Location {
   id: number
@@ -102,6 +102,7 @@ export const ENVIRONMENT_LABELS: Record<LocationEnvironment, string> = {
   'Природа': 'Природа',
   'Город': 'Город',
   'Храм': 'Храм',
+  'Корабль': 'Корабль',
 }
 
 export const ENVIRONMENT_COLORS: Record<LocationEnvironment, string> = {
@@ -109,4 +110,5 @@ export const ENVIRONMENT_COLORS: Record<LocationEnvironment, string> = {
   'Природа': '#2E7D32',
   'Город': '#FF5722',
   'Храм': '#FF9800',
+  'Корабль': '#3B82F6',
 }

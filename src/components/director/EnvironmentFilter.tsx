@@ -1,7 +1,7 @@
 import type { LocationEnvironment } from '../../lib/types'
 import { ENVIRONMENT_LABELS, ENVIRONMENT_COLORS } from '../../lib/types'
 
-const ENVIRONMENTS: LocationEnvironment[] = ['Дом', 'Природа', 'Город', 'Храм']
+const ENVIRONMENTS: LocationEnvironment[] = ['Дом', 'Природа', 'Город', 'Храм', 'Корабль']
 
 interface Props {
   active: LocationEnvironment | null
