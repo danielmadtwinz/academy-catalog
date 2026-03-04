@@ -206,7 +206,7 @@ export const CATEGORY_LABELS: Record<CharacterCategory, string> = {
   rhythmling: 'Ритмлинги',
   resonant: 'Резонанты',
   concept: 'Концепт',
-  vice: 'Пороки',
+  vice: 'Антагонисты',
   virtue: 'Добродетели',
 }
 

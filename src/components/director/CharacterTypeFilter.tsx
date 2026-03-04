@@ -1,7 +1,7 @@
 import type { CharacterCategory } from '../../lib/characters'
 import { CATEGORY_LABELS, CATEGORY_COLORS } from '../../lib/characters'
 
-const CATEGORIES: CharacterCategory[] = ['main', 'secondary', 'rhythmling', 'resonant', 'concept']
+const CATEGORIES: CharacterCategory[] = ['main', 'secondary', 'rhythmling', 'resonant', 'concept', 'vice', 'virtue']
 
 interface Props {
   active: CharacterCategory | null
