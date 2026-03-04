@@ -17,6 +17,7 @@ export function useLocations() {
             data.map(d => ({
               ...d,
               episodes: Array.isArray(d.episodes) ? d.episodes : [],
+              characters: Array.isArray(d.characters) ? d.characters : [],
             })),
           )
         }

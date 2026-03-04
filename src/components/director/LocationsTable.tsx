@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom'
 import { ChevronDown, ChevronUp, Copy, Check, MapPin } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useLocations } from '../../hooks/useLocations'
-import type { LocationEnvironment } from '../../lib/types'
+import type { Location, LocationEnvironment } from '../../lib/types'
 import { ENVIRONMENT_COLORS, ENVIRONMENT_LABELS } from '../../lib/types'
 import EnvironmentFilter from './EnvironmentFilter'
 
-function LocationCard({ location: l }: { location: import('../../lib/types').Location }) {
+function LocationCard({ location: l }: { location: Location }) {
   const [open, setOpen] = useState(false)
   const [copied, setCopied] = useState(false)
 
@@ -103,6 +103,45 @@ function LocationCard({ location: l }: { location: import('../../lib/types').Loc
                 )}
               </div>
 
+              {/* Atmosphere */}
+              {l.atmosphere && (
+                <div>
+                  <p className="text-[10px] uppercase tracking-wider text-[var(--color-text-muted)] mb-1">Атмосфера и эмоции</p>
+                  <p className="text-xs text-[var(--color-text-muted)] leading-relaxed">{l.atmosphere}</p>
+                </div>
+              )}
+
+              {/* Characters */}
+              {l.characters && l.characters.length > 0 && (
+                <div>
+                  <p className="text-[10px] uppercase tracking-wider text-[var(--color-text-muted)] mb-2">Персонажи локации</p>
+                  <div className="space-y-2">
+                    {l.characters.map((ch, i) => (
+                      <div key={i} className="flex items-start gap-2.5">
+                        <div
+                          className="w-6 h-6 rounded-full flex items-center justify-center text-[9px] font-bold text-white flex-shrink-0 mt-0.5"
+                          style={{ backgroundColor: ch.color }}
+                        >
+                          {ch.name[0]}
+                        </div>
+                        <div className="min-w-0">
+                          <span className="text-xs font-medium">{ch.name}</span>
+                          <p className="text-[11px] text-[var(--color-text-muted)] leading-snug">{ch.role}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Director notes */}
+              {l.director_notes && (
+                <div className="bg-[var(--color-surface-light)] rounded-lg p-3 border-l-2 border-[var(--color-primary)]">
+                  <p className="text-[10px] uppercase tracking-wider text-[var(--color-primary)] mb-1">Рекомендации режиссёру</p>
+                  <p className="text-xs text-[var(--color-text-muted)] leading-relaxed">{l.director_notes}</p>
+                </div>
+              )}
+
               {/* Resonant link */}
               {l.resonant_link && (
                 <div>
@@ -169,7 +208,8 @@ export default function LocationsTable() {
         l =>
           l.name.toLowerCase().includes(q) ||
           (l.description?.toLowerCase().includes(q) ?? false) ||
-          (l.genre_style?.toLowerCase().includes(q) ?? false),
+          (l.genre_style?.toLowerCase().includes(q) ?? false) ||
+          l.characters.some(ch => ch.name.toLowerCase().includes(q)),
       )
     }
     return result
@@ -203,7 +243,7 @@ export default function LocationsTable() {
       <div className="flex gap-3 mb-4">
         <input
           type="text"
-          placeholder="Поиск локации..."
+          placeholder="Поиск локации или персонажа..."
           value={search}
           onChange={e => setSearch(e.target.value)}
           className="bg-[var(--color-surface-light)] border border-[var(--color-border)] rounded-lg px-3 py-1.5 text-xs text-[var(--color-text)] outline-none flex-1 placeholder:text-[var(--color-text-muted)]"

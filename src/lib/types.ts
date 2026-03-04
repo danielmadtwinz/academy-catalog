@@ -84,6 +84,12 @@ export const MODULE_COLORS: Record<string, string> = {
 
 export type LocationEnvironment = 'Дом' | 'Природа' | 'Город' | 'Храм' | 'Корабль'
 
+export interface LocationCharacter {
+  name: string
+  role: string
+  color: string
+}
+
 export interface Location {
   id: number
   name: string
@@ -94,6 +100,9 @@ export interface Location {
   genre_style: string | null
   resonant_link: string | null
   nano_banana_prompt: string | null
+  atmosphere: string | null
+  director_notes: string | null
+  characters: LocationCharacter[]
   episodes: number[]
 }
 
